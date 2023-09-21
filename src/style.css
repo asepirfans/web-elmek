@@ -1,0 +1,73 @@
+.responsive-iframe {
+    position: relative;
+    overflow: hidden;
+    padding-top: 50%; /* Perbandingan aspek untuk rasio 16:9 */
+  }
+
+  .responsive-iframe iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* Gaya tambahan lainnya */
+  h1 {
+    font-size: 24px;
+  }
+
+  .user-input {
+    margin-bottom: 20px;
+  }
+
+  /* Gaya untuk kontainer tabel */
+  .table-container {
+    max-height: 300px; /* Atur tinggi maksimum sesuai kebutuhan Anda */
+    overflow-y: auto; /* Aktifkan scroll vertikal jika tabel lebih tinggi dari kontainer */
+  }
+
+  table {
+    width: 100%;
+  }
+
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  /* Gaya tambahan untuk Bootstrap */
+  .container {
+    padding: 20px;
+  }
+
+  /* CSS untuk layar berukuran kecil (ponsel) */
+  @media (max-width: 500px) {
+    /* Misalnya, mengurangi padding pada elemen */
+    .container {
+      padding: 10px;
+    }
+
+    /* Mengurangi ukuran font untuk judul */
+    h1 {
+      font-size: 18px;
+    }
+
+    /* Mengatur ulang tinggi iframe */
+    .responsive-iframe {
+      padding-top: 150%; /* Sesuaikan dengan perbandingan aspek yang sesuai */
+    }
+
+    /* Mengurangi padding pada tabel */
+    th,
+    td {
+      padding: 4px;
+    }
+  }
