@@ -2,52 +2,112 @@
 <html>
   <head>
     <title>Laser Cutting</title>
-    <!-- Tambahkan pustaka Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
-
-    <!-- Tag meta viewport untuk responsif pada layar ponsel -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="./src/style.css" />
   </head>
   <body>
-    <div class=""></div>
-    <div class="container">
-      <h1 class="text-center mb-4">Data Order Pengerjaan Laser Cutting</h1>
-      <div class="table-container">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Nama Pemohon</th>
-              <th>Tanggal</th>
-              <th>Status Verifikasi</th>
-            </tr>
-          </thead>
-          <tbody id="data-table"></tbody>
-        </table>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow">
+      <a class="navbar-brand fs-5 ml-4" href="#">Elmek</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="col-lg-10 collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+        <div class="navbar-nav pl-2">
+          <a class="nav-link active fs-5 ml-1" href="#home">Home</a>
+          <a class="nav-link active fs-5 ml-1" href="#jadwal">Jadwal</a>
+          <a class="nav-link active fs-5 ml-1" href="#order">Order</a>
+          <a class="nav-link active fs-5 ml-1" href="#order">Konfirmasi</a>
+          <a class="nav-link active fs-5 ml-1" href="#data">Status</a>
+        </div>
       </div>
-      <p class="text-center mt-4">Jika telah selesai pengerjaan laser cutting klik tombol berikut untuk mengisi link konfirmasi</p>
-      <div class="d-flex justify-content-center align-items-center">
-        <a href="https://forms.gle/R3AwaaVC8MmmdxwS7" class="btn btn-success rounded-pill mb-4">Konfirmasi</a>
+      <div class="col-lg-2 collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav pl-2">
+          <a class="nav-link active fs-5 ml-1" href="./login.html">Login</a>
+        </div>
       </div>
-      <h1 class="text-center mb-4">Jadwal Pengerjaan Laser Cutting</h1>
-      <div class="responsive-iframe mb-4">
-        <iframe
-          src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=Asia%2FJakarta&showTitle=0&showPrint=0&showTz=0&showCalendars=0&showTabs=1&showDate=1&hl=id&title=Elmek%20Kalender&src=YWUuZWxtZWsyM0BnbWFpbC5jb20&color=%23039BE5"
-          style="border-width: 0"
-          width="800"
-          height="600"
-          frameborder="0"
-          scrolling="no"
-        ></iframe>
+    </nav>
+    <div class="jumbotron jumbotron-fluid vh-100 d-flex flex-column text-center justify-content-center align-items-center" id="home">
+      <div class="container mt-5 ">
+        <h1 class="display-4">Sistem Order Penggunaan Mesin <span>Laser Cutting</span></h1>
+        <p class="lead mt-3">Selamat datang, silahkan lihat jadwal terlebih dahulu sebelum order penggunaan mesin laser cutting</p>
+      </div>
+      <a href="#jadwal" class="cta">Next!</a>
+    </div>
+    <div class="container-jadwal" id="jadwal">
+      <div class="container" >
+        <h1 class="text-center mt-5 mb-5 fs-3" >Jadwal Pengerjaan Laser Cutting</h1>
+        <div class="responsive-iframe mb-4">
+          <iframe
+            src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=Asia%2FJakarta&showTitle=0&showPrint=0&showTz=0&showCalendars=0&showTabs=1&showDate=1&hl=id&title=Elmek%20Kalender&src=YWUuZWxtZWsyM0BnbWFpbC5jb20&color=%23039BE5"
+            style="border-width: 0"
+            width="800"
+            height="600"
+            frameborder="0"
+            scrolling="no"
+          ></iframe>
+        </div> 
       </div>
     </div>
-
-    <!-- Tambahkan pustaka Bootstrap JS -->
+    <div class="container-content">
+      <div class="container" id="order">
+        <h1 class="text-center mt-5 mb-3 fs-3">Form Order dan Konfirmasi</h1>
+        <div class="row">
+          <div class="col-sm-6 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Form Order</h5>
+                <p class="card-text">Silahkan klik tombol berikut untuk melakukan order penggunaan mesin laser cutting</p>
+                <div class="d-flex justify-content-center align-items-center">
+                  <a href="https://bit.ly/form-order-lasercutting 
+                  " class="btn btn-primary" target="blank">Order</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Form Konfirmasi</h5>
+                <p class="card-text">Silahkan klik tombol berikut apabila telah menyelesaikan pekerjaan mesin laser cutting</p>
+                <div class="d-flex justify-content-center align-items-center">
+                  <a href="https://bit.ly/form-konfirmasi-user" class="btn btn-primary" target="blank">Konfirmasi</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>    
+        <h1 class="text-center mt-3 mb-3 fs-4">Data Order Pengerjaan Laser Cutting</h1>
+        <div class="card-table">
+          <div class="table-container" id="data">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Nama Pemohon</th>
+                  <th>Tanggal</th>
+                  <th>Status Verifikasi</th>
+                </tr>
+              </thead>
+              <tbody id="data-table"></tbody>
+            </table>
+          </div>  
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="container">
+        <div class="d-flex">
+          <h1 class="">Polman Bandung</h1>
+        </div>
+      </div>
+    </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
     <script src="./src/main.js"></script>
   </body>
 </html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="./src/css/login.css" />
+  <link rel="stylesheet" href="sweetalert2.min.css" />
+  <title>Login</title>
+</head>
+
+<body>
+  <div class="container d-flex justify-content-center align-items-center">
+    <div class="login-container d-flex flex-column justify-content-center align-items-center">
+      <div class="back">
+        <button class="btn btn-dark" onclick="back()">Back</button>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 d-flex justify-content-center align-items-center">
+          <img src="./src/image/polman.png" alt="" height="200">
+        </div>
+        <div class="col-lg-6 ">
+          <h1 class="text-center font-weight-bold">Log<span class="bg-primary">in</span></h1>
+          <p class="text-center font-weight-bold">Selamat Datang di Admin Elmek👋</p>
+          <form id="loginForm" class="d-flex flex-column">
+            <label for="username" class="form-check-label">Email</label>
+            <input type="text" id="username" placeholder="Email" required class="mb-2" />
+            <div class="form-group">
+              <label for="role">Role</label>
+              <select id="role" class="form-control">
+                <option value="">Role</option>
+                <option value="PLP">PLP</option>
+                <option value="PPC">PPC</option>
+                <option value="Ka Lab">Ka Lab</option>
+              </select>
+            </div>
+            <button type="button" onclick="login()" class="btn btn-dark p-2">Login</button>
+          </form>
+          <div class="loading mt-4" id="loading" style="display: none">
+            <p>Loading...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.min.js"></script>
+    <script>
+      function back() {
+        window.location.href = "index.html";
+      }
+      function login() {
+        const usernameInput = document.getElementById("username");
+        const roleInput = document.getElementById("role");
+        const username = usernameInput.value.trim();
+        const roleMode = roleInput.value.trim();
+
+        if (username === "") {
+          Swal.fire({
+            title: "Error!",
+            text: "Please enter your email",
+            icon: "error",
+            confirmButtonText: "OK",
+          });
+          return;
+        }
+
+        if (roleMode === "") {
+          Swal.fire({
+            title: "Error!",
+            text: "Please enter your role",
+            icon: "error",
+            confirmButtonText: "OK",
+          });
+          return;
+        }
+
+        const loading = document.getElementById("loading");
+        const formData = { username, roleMode };
+
+        loading.style.display = "block";
+        
+        fetch("https://backend-elmek.vercel.app/api/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              Swal.fire({
+                title: "Good job!",
+                text: "You clicked the button!",
+                icon: "success",
+                confirmButtonText: "Go to Dashboard",
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  loading.style.display = "none";
+                  sessionStorage.setItem("isLoggedIn", "true");
+                  sessionStorage.setItem("Email", usernameInput.value);
+                  sessionStorage.setItem("Role", roleInput.value);
+                  window.location.href = "dashboard.html";
+                }
+              });
+            } else {
+              loading.style.display = "none";
+              Swal.fire({
+                title: "Error!",
+                text: "Check your Email and Role",
+                icon: "error",
+                confirmButtonText: "Back to Login",
+              });
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      }
+
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

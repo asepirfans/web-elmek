@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <!-- Tambahkan tautan ke Bootstrap CSS di sini -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="./src/css/dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="sweetalert2.min.js"></script>
+  <style>
+    /* Gaya tambahan sesuai kebutuhan Anda */
+    body {
+      background-color: #f8f9fa;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar (Sidebar) -->
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top shadow d-flex justify-content-between">
+    <a class="navbar-brand fs-5 ml-4" href="#">Admin Elmek</a>
+    <a class="navbar-brand logout btn btn-light text-dark" onclick="logout()">
+        Logout
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebarMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+  <div class="container-fluid mt-2">
+    <div class="row">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse shadow">
+        <div class="sidebar-sticky pt-3">
+          <ul class="nav flex-column py-1" aria-label="Toggle navigation">
+            <li class="nav-item">
+              <a class="nav-link" href="./dashboard.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" class="feather feather-home">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z">
+                  </path>
+                  <polyline points="9 22 9 12 15 12 15 22">
+                  </polyline>
+                </svg>
+                Dashboard
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./reports.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-file">
+                  <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                  <polyline points="13 2 13 9 20 9"></polyline>
+                </svg>
+                Report
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link btn btn-light mx-4 logout-side mt-2" onclick="logout()">
+                Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+        <div class="container">
+          <h1>Selamat Datang Di Dashboard</h1>
+          <h3>Role: <span id="role"></span></h3>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card-content d-flex align-items-center">
+                <div class="icon">
+                  <img src="./src/image/img-1.jpg" height="80">
+                </div>
+                <div class="d-block">
+                  <h3 class="ml-2">Total Pengguna</h3>
+                  <h3 class="ml-2"><span id="user"></span></h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card-content d-flex align-items-center">
+                <div class="icon">
+                  <img src="./src/image/img-1.jpg" height="80">
+                </div>
+                <div class="d-block">
+                  <h3 class="ml-2">Diproses</h3>
+                  <h3 class="ml-2"><span id="proses"></span></h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card-content d-flex align-items-center">
+                <div class="icon">
+                  <img src="./src/image/img-1.jpg" height="80">
+                </div>
+                <div class="d-block">
+                  <h3 class="ml-2">Disetujui</h3>
+                  <h3 class="ml-2"><span id="setuju"></span></h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card-content d-flex align-items-center">
+                <div class="icon">
+                  <img src="./src/image/img-1.jpg" height="80">
+                </div>
+                <div class="d-block">
+                  <h3 class="ml-2">Ditolak</h3>
+                  <h3 class="ml-2"><span id="tolak"></span></h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-table mt-4 mb-4">
+            <div class="d-flex flex-grow-0 justify-content-between">
+              <h3>Data Pengguna</h3>
+            </div>
+            <div class="table-wrapper">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Nama</th>
+                    <th>Status Verifikasi</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="data-table">
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+          <div class="card-table mt-4 mb-4">
+            <div class="d-flex flex-grow-0 justify-content-between">
+              <h3>Data Pengguna</h3>
+            </div>
+            <!-- <iframe
+              src="https://docs.google.com/spreadsheets/d/1HGECEem9EMUcnGVKjOqACHDeFMiTeOX4zx8rTyqc09U/edit?resourcekey#gid=82467767">
+            </iframe> -->
+            <iframe
+              src="https://docs.google.com/spreadsheets/d/1HGECEem9EMUcnGVKjOqACHDeFMiTeOX4zx8rTyqc09U/edit?usp=sharing">
+            </iframe>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  </div>
+  <script>
+  </script>
+  <script src="./src/js/dashboard.js"></script>
+  <!-- Tambahkan tautan ke Bootstrap JS dan jQuery di sini (diletakkan di bagian bawah sebelum </body>) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
