@@ -75,6 +75,8 @@ function populateTable(data) {
   totalReject = 0;
   totalProcess = 0;
 
+  data.sort((a, b) => new Date(b.Timestamp) - new Date(a.Timestamp));
+
   // Loop melalui data dan tambahkan baris baru untuk setiap entri
   // Cek Role dari sessionStorage
   const userRole = sessionStorage.getItem("Role");

@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="sweetalert2.min.css" />
   <title>Login</title>
 </head>
-
 <body>
   <div class="container d-flex justify-content-center align-items-center">
     <div class="login-container d-flex flex-column justify-content-center align-items-center">
@@ -104,11 +103,20 @@
                   window.location.href = "dashboard.html";
                 }
               });
-            } else {
+            } else if (data.message === "Role tidak cocok") {
               loading.style.display = "none";
               Swal.fire({
                 title: "Error!",
-                text: "Check your Email and Role",
+                text: "Check your Role",
+                icon: "error",
+                confirmButtonText: "Back to Login",
+              });
+            }
+            else {
+              loading.style.display = "none";
+              Swal.fire({
+                title: "Error!",
+                text: "Check your Email",
                 icon: "error",
                 confirmButtonText: "Back to Login",
               });
