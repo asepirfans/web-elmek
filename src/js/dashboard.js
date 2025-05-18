@@ -23,7 +23,7 @@ function sendChangesToAppsScript(id, kaLab, ppcAE) {
     ppcAE: ppcAE,
   };
 
-  fetch("https://backend-elmek.vercel.app/api/konfirmasi", {
+  fetch("https://api-elmek.vercel.app/api/konfirmasi", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -208,7 +208,7 @@ function sendRejectReasonToServer(entryId, rejectReason) {
   };
 
   // URL Google Apps Script yang akan menangani permintaan
-  const scriptUrl = "https://backend-elmek.vercel.app/api/tolak";
+  const scriptUrl = "https://api-elmek.vercel.app/api/tolak";
 
   // Buat objek pengaturan untuk permintaan POST
   const requestOptions = {
